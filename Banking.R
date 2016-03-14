@@ -29,6 +29,14 @@ ROCRpred = prediction(predLM, test$y)
 as.numeric(performance(ROCRpred, "auc")@y.values)
 proc.time() - start.time
 
+# Performance function
+ROCRperf = performance(ROCRpred, "tpr", "fpr")
+
+# Plot AUC graph
+plot(ROCRperf)
+
+# Add colors
+plot(ROCRperf, colorize=TRUE)
 
 # Inspect model
 summary(modelLM)
